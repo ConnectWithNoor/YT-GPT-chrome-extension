@@ -1,33 +1,53 @@
-This is a [Plasmo extension](https://docs.plasmo.com/) project bootstrapped with [`plasmo init`](https://www.npmjs.com/package/plasmo).
+## Youtube GPT ! Chat with videos"
 
-## Getting Started
+#### AI powered chrome extension that lets you summarize Youtube video into important points for quick understandings, and allow you to do interactive chat with your videos.
 
-First, run the development server:
+First, do the following:
 
-```bash
-pnpm dev
-# or
-npm run dev
+```js
+- fill .env file
 ```
 
-Open your browser and load the appropriate development build. For example, if you are developing for the chrome browser, using manifest v3, use: `build/chrome-mv3-dev`.
-
-You can start editing the popup by modifying `popup.tsx`. It should auto-update as you make changes. To add an options page, simply add a `options.tsx` file to the root of the project, with a react component default exported. Likewise to add a content page, add a `content.ts` file to the root of the project, importing some module and do some logic, then reload the extension on your browser.
-
-For further guidance, [visit our Documentation](https://docs.plasmo.com/)
-
-## Making production build
-
-Run the following:
+then , run the development server:
 
 ```bash
-pnpm build
-# or
-npm run build
+pnpm install
+pnpm run dev
 ```
 
-This should create a production bundle for your extension, ready to be zipped and published to the stores.
+there will be a build folder generated, follow the steps mentioned:
 
-## Submit to the webstores
+1.  Go to chrome extension page.
+2.  Turn on developer mode.
+3.  Click the load unpack button
+4.  Navigate to the build folder and select it.
+5.  Keep the dev server running while building the extension.
 
-The easiest way to deploy your Plasmo extension is to use the built-in [bpp](https://bpp.browser.market) GitHub action. Prior to using this action however, make sure to build your extension and upload the first version to the store to establish the basic credentials. Then, simply follow [this setup instruction](https://docs.plasmo.com/framework/workflows/submit) and you should be on your way for automated submission!
+#### Project Snippets
+
+<!--
+- Landing page
+  ![LandingPage](https://i.imgur.com/tGEoWHx.png) -->
+
+- More snippets coming..
+
+#### 3rd-Party Services & Libraries Used
+
+- [Plasmo Framework](https://docs.plasmo.com/)
+- React.js
+- Shadcn + TailwindCSS
+
+#### Project Features
+
+#### Project Strategies
+
+#### Known issues of the project
+
+#### Reference Images
+
+#### Useful resources
+
+- [Plasmo Documentation](https://docs.plasmo.com)
+- [Shdcn Documentation](https://ui.shadcn.com/docs/components-json)
+
+Made by [Noor Muhammad](https://www.linkedin.com/in/connectwithnoor)
