@@ -1,4 +1,5 @@
 import Extension from "@/components/extension"
+import Provider from "@/providers/provider"
 import styleText from "data-text:@/style.css"
 import type {
   PlasmoCSConfig,
@@ -43,7 +44,11 @@ export const getInlineAnchor: PlasmoGetInlineAnchor = async () => ({
 export const getShadowHostId: PlasmoGetShadowHostId = () => `plasmo-inline`
 
 function MainUI() {
-  return <Extension />
+  return (
+    <Provider>
+      <Extension />
+    </Provider>
+  )
 }
 
 export default MainUI
