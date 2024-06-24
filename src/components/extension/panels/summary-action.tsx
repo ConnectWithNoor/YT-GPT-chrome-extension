@@ -30,7 +30,7 @@ function SummaryActions({}: Props) {
   const { copyToClipboard, isCopied } = useCopyToClipboard({ timeout: 2000 })
 
   const copySummary = () => {
-    if (isCopied || !summaryContent || summaryIsGenerating) return
+    if (isCopied || !summaryContent || !summaryIsGenerating) return
 
     copyToClipboard(summaryContent)
   }

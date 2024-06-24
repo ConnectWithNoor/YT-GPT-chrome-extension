@@ -56,6 +56,27 @@ export function SummaryProvider({ children }: SummaryProviderProps) {
     })
   }
 
+  // to get the summary message (content) from the port
+  useEffect(() => {
+    if (port.data?.message !== undefined && !port.data?.isEnd) {
+      setSummaryContent(port.data.message)
+    } else {
+      setSummaryIsGenerating(false)
+    }
+
+    setSummaryIsError(false)
+  }, [port.data?.message])
+
+  // to get the error message while generating summary from the port
+  useEffect(() => {
+    if (port?.data?.error !== "undefined" && port.data?.error !== null) {
+      setSummaryIsError(true)
+      setSummaryContent(null)
+    } else {
+      setSummaryIsError(false)
+    }
+  }, [port?.data?.error])
+
   useEffect(() => {
     setSummaryContent(null)
     setSummaryIsError(false)
