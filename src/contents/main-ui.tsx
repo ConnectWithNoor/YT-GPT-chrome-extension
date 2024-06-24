@@ -36,7 +36,7 @@ const INJECTED_ELEMENT_ID = "#secondary-inner.style-scope.ytd-watch-grid"
 // https://docs.plasmo.com/framework/content-scripts-ui/life-cycle#inline
 export const getInlineAnchor: PlasmoGetInlineAnchor = async () => ({
   element: document.querySelector(INJECTED_ELEMENT_ID),
-  insertPosition: "beforebegin"
+  insertPosition: "afterbegin"
 })
 
 // https://docs.plasmo.com/framework/content-scripts-ui/life-cycle#detecting-and-optimizing-root-container-removal

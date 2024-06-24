@@ -34,12 +34,21 @@ there will be a build folder generated, follow the steps mentioned:
 #### 3rd-Party Services & Libraries Used
 
 - [Plasmo Framework](https://docs.plasmo.com/)
+- [Plasmo Messaging API](https://docs.plasmo.com/framework/messaging#installation)
 - React.js
 - Shadcn + TailwindCSS
+- [OpenAI](https://www.npmjs.com/package/openai)
 
 #### Project Features
 
+- Using the content (main-ui.tsx) to inject our extension UI in youtube video page.
+- Extension is capable of making API calls to fetch Youtube's video details (metadata and transcript).
+- Extension can summarize the youtube video with the help of the video details by using OpenAI models(3.5 and 4 supported).
+
 #### Project Strategies
+
+- communicating with service worker (background/)
+  > Plasmo Framework has a Messaging API that enables the communication between service worker and different parts of your extension easy. We have used the Ports which creates a long-lived connection with the service worker. The port lives inside background directory and can use easily utilized using the usePort hook exported by plasmo.
 
 #### Known issues of the project
 

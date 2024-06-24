@@ -3,7 +3,7 @@ import React from "react"
 type Props = {}
 
 function Summary({}: Props) {
-  return <div>Summary</div>
+  return <></>
 }
 
 export default Summary
