@@ -1,8 +1,10 @@
+import { Collapsible, CollapsibleContent } from "@/components/ui/collapsible"
 import { useExtension } from "@/hooks/use-context"
 import { getCSSVariable, getVideoData, getVideoId } from "@/utils/helpers"
 import React, { useEffect } from "react"
 
-import { Collapsible } from "./ui/collapsible"
+import Actions from "./actions"
+import Panels from "./panels"
 
 type Props = {}
 
@@ -12,7 +14,6 @@ function Extension({}: Props) {
     setExtensionData,
     setExtensionIsOpen,
     setExtensionLoading,
-    setExtensionPanel,
     setExtensionTheme,
     setExtensionVideoId,
 
@@ -52,6 +53,8 @@ function Extension({}: Props) {
     }
   }, [])
 
+  if (!extensionTheme) return null
+
   return (
     <main
       ref={setExtensionContainer}
@@ -61,7 +64,10 @@ function Extension({}: Props) {
           className="space-y-3"
           open={extensionIsOpen}
           onOpenChange={setExtensionIsOpen}>
-          <h1>Extension Actions</h1>
+          <Actions />
+          <CollapsibleContent className="w-full h-fil max-h-[500px] border-zinc-200 rounded-md overflow-auto">
+            <Panels />
+          </CollapsibleContent>
         </Collapsible>
       </div>
     </main>

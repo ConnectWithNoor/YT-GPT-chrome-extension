@@ -29,11 +29,10 @@ export const getCSSVariable = (name: string) => {
 }
 
 export const getVideoData = async (id: string) => {
-  // @ts-ignore
-  let player = window.ytInitialPlayerResponse
+  let player = window.ytInitialPlayerResponse // ytInitialPlayerResponse comes from Youtube's video page, the window object is extended to have this property
+  //   in case YT video pages doesn't have the ytInitialPlayerResponse, we fetch the video page and parse it to get the required info
   if (!player || id !== player.videoDetails.videoId) {
-    // if the player is not available or the video id is different, fetch the video page to get the player response
-    const pageData = await fetch(`https://www.youtube.com/watch?v=${id}`) //getting the YT video page and parsing it to get the required info
+    const pageData = await fetch(`https://www.youtube.com/watch?v=${id}`) //getting the YT video page
     const body = await pageData.text() // getting the text of the page
     const playerResponseMatch = body.match(YT_INITIAL_PLAYER_RESPONSE_REGEX) // matching the player response
 
@@ -66,4 +65,12 @@ export const getVideoData = async (id: string) => {
     }
   }
   return { metadata, transcript: null } // if no captions, return null for transcript
+}
+
+export const CopyVideoURL = (
+  isCopied: boolean,
+  copyToClipboard: (href: string) => void
+) => {
+  if (isCopied) return
+  copyToClipboard(window.location.href)
 }
