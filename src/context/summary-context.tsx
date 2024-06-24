@@ -1,5 +1,6 @@
+import { useExtension } from "@/hooks/use-context"
 import { models, prompts } from "@/utils/constants"
-import { createContext, useState } from "react"
+import { createContext, useEffect, useState } from "react"
 
 import { usePort } from "@plasmohq/messaging/hook"
 
@@ -36,8 +37,30 @@ export function SummaryProvider({ children }: SummaryProviderProps) {
   const [summaryIsGenerating, setSummaryIsGenerating] = useState<boolean>(false)
 
   const port = usePort("completion")
+  const { extensionData, extensionLoading } = useExtension()
 
-  const generateSummary = async (e: any) => {}
+  const generateSummary = async (e: any) => {
+    e.preventDefault()
+
+    if (summaryContent !== null) {
+      setSummaryContent(null)
+    }
+
+    setSummaryIsGenerating(true)
+    setSummaryIsError(false)
+
+    port.send({
+      prompt: summaryPrompt.content,
+      model: summaryModel.content,
+      context: extensionData
+    })
+  }
+
+  useEffect(() => {
+    setSummaryContent(null)
+    setSummaryIsError(false)
+    setSummaryIsError(false)
+  }, [extensionLoading])
 
   return (
     <SummaryContext.Provider

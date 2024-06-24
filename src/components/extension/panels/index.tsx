@@ -12,7 +12,7 @@ function Panels({}: Props) {
 
   return (
     <div>
-      {extensionPanel === "Summary" && <Summary></Summary>}
+      {extensionPanel === "Summary" && <Summary />}
       {extensionPanel === "Transcript" && <Transcript />}
       {extensionPanel === "Chat" && <Chat />}
     </div>
