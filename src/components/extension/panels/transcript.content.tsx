@@ -71,7 +71,7 @@ const TranscriptList = memo(
     // in case of no transcript, show no results found
     if (filteredTranscript.length <= 0) {
       return (
-        <div>
+        <div className="flex justify-center items-center w-full h-32">
           <p>No results found</p>
         </div>
       )
