@@ -83,7 +83,7 @@ function MarkdownToHTML({ markdown, className }: MarkdownProps) {
 
   return (
     <article
-      className={cn("prose", className)}
+      className={cn("", className)}
       dangerouslySetInnerHTML={{ __html: htmlContent }}
     />
   )
