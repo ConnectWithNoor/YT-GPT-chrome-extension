@@ -19,12 +19,8 @@ import TooltipWrapper from "./tooltip-wrapper"
 type Props = {}
 
 function Actions({}: Props) {
-  const {
-    setExtensionPanel,
-    extensionPanel,
-    setExtensionIsOpen,
-    extensionIsOpen
-  } = useExtension()
+  const { setExtensionPanel, setExtensionIsOpen, extensionIsOpen } =
+    useExtension()
 
   const { copyToClipboard, isCopied } = useCopyToClipboard({ timeout: 2000 })
 

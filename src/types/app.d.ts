@@ -10,3 +10,9 @@ type Prompt = {
   label: string
   content: string
 }
+
+type Transcript = {
+  text: string
+  startTime: number
+  endTime: number
+}

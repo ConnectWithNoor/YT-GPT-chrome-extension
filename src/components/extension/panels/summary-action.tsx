@@ -6,8 +6,8 @@ import {
   SelectTrigger,
   SelectValue
 } from "@/components/ui/select"
+import { useSummary } from "@/hooks/use-context"
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
-import { useSummary } from "@/hooks/use-summary"
 import { models, prompts } from "@/utils/constants"
 import { CheckIcon, ClipboardCopyIcon, ReloadIcon } from "@radix-ui/react-icons"
 import React from "react"

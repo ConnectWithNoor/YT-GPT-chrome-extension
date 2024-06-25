@@ -74,3 +74,71 @@ export const CopyVideoURL = (
   if (isCopied) return
   copyToClipboard(window.location.href)
 }
+
+export const cleanJSONTranscript = (transcript: any) => {
+  // this function is used to convert the transcript from JSON to a clean text format that we can use inside the transcript tab in the extension
+  const chunks = []
+
+  let currentChunk = ""
+  let currentStartTime = transcript.events[0].tStartMs
+  let currentEndTime = ""
+
+  transcript.events.forEach((event) => {
+    event.segs?.forEach((seg) => {
+      const segmentText = seg.utf8.replace("/\n/g", " ") // replacing new lines with space
+      currentEndTime = event.tStartMs + (seg.tOffsetMs || 0) // calculating the end time of the segment
+      if ((currentChunk + segmentText).length > 300) {
+        chunks.push({
+          text: currentChunk.trim(),
+          startTime: currentStartTime,
+          endTime: currentEndTime
+        })
+
+        currentChunk = segmentText
+        currentStartTime = currentEndTime
+      } else {
+        currentChunk += segmentText
+      }
+    })
+  })
+
+  if (currentChunk) {
+    chunks.push({
+      text: currentChunk.trim(),
+      startTime: currentStartTime,
+      endTime: currentEndTime
+    })
+  }
+
+  return chunks
+}
+
+export const cleanTextTranscript = (transcript: any) => {
+  let textLines = []
+  let tempText = ""
+  let lastTime = 0
+
+  transcript.events.forEach((event) => {
+    event.segs?.forEach((seg) => {
+      const segmentStartTimeMs = event.startMs + (seg.tOffsetMs || 0)
+
+      if (
+        tempText &&
+        (segmentStartTimeMs - lastTime > 1000 || seg.utf8 === "\n")
+      ) {
+        const timeFormatted = new Date(lastTime).toISOString().substr(11, 12)
+        textLines.push(`${timeFormatted}: ${tempText.trim()}`)
+        tempText = ""
+      }
+      lastTime = segmentStartTimeMs
+      tempText += seg.utf8
+    })
+  })
+
+  if (tempText) {
+    const timeFormatted = new Date(lastTime).toISOString().substr(11, 12)
+    textLines.push(`${timeFormatted}: ${tempText.trim()}`)
+  }
+
+  return textLines.join("\n")
+}

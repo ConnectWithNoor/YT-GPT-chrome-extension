@@ -1,7 +1,7 @@
 import MarkdownToHTML from "@/components/global/markdown-to-html"
 import { Button } from "@/components/ui/button"
 import { Skeleton } from "@/components/ui/skeleton"
-import { useSummary } from "@/hooks/use-summary"
+import { useSummary } from "@/hooks/use-context"
 import React from "react"
 
 type Props = {}
