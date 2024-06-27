@@ -1,7 +1,7 @@
-import { BarChartIcon } from "@radix-ui/react-icons"
+import { BarChartIcon } from "@radix-ui/react-icons";
 
 export const YT_INITIAL_PLAYER_RESPONSE_REGEX =
-  /ytInitialPlayerResponse\s*=\s*({.+?})\s*;\s*(?:var\s+(?:meta|head)|<\/script|\n)/
+  /ytInitialPlayerResponse\s*=\s*({.+?})\s*;\s*(?:var\s+(?:meta|head)|<\/script|\n)/;
 
 export const models: Model[] = [
   {
@@ -16,7 +16,7 @@ export const models: Model[] = [
     content: "gpt-4-turbo",
     icon: <BarChartIcon className="h-4 w-4 opacity-70" />
   }
-]
+];
 
 export const prompts: Prompt[] = [
   {
@@ -57,4 +57,16 @@ export const prompts: Prompt[] = [
     label: "Prompt Two",
     content: "Give me a summary of this video"
   }
-]
+];
+
+export const CHAT_SYSTEM_PROMPT = `
+You are a helpful assistant, Given the metadata and transcript of a YouTube video. Your primary task is to provide accurate and relevant answers to any questions based on this information. Use the available details effectively to assist users with their inquiries about the video's content, context, or any other related aspects.
+
+START OF METADATA
+Video Title: {title}
+END OF METADATA
+
+START OF TRANSCRIPT
+{transcript}
+END OF TRANSCRIPT
+`;

@@ -1,9 +1,9 @@
-import React from "react"
+import React from "react";
 
-import SummaryActions from "./summary-action"
-import SummaryContent from "./summary-content"
+import SummaryActions from "./summary-action";
+import SummaryContent from "./summary-content";
 
-type Props = {}
+type Props = {};
 
 function Summary({}: Props) {
   return (
@@ -11,7 +11,7 @@ function Summary({}: Props) {
       <SummaryActions />
       <SummaryContent />
     </>
-  )
+  );
 }
 
-export default Summary
+export default Summary;
