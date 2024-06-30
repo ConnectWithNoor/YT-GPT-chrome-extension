@@ -28,7 +28,6 @@ there will be a build folder generated, follow the steps mentioned:
 ![summary](assets/summary.png)
 ![transcript](assets/transcript.png)
 ![chatting](assets/chat.png)
-![alt text](image.png)
 
 <!--
 - Landing page
